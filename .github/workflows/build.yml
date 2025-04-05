@@ -15,7 +15,7 @@ on:
 
 env:
   RPI_FIRMWARE_URL: https://github.com/raspberrypi/firmware/
-  DTB_VERSION: 1e403e23baab5673f0494a200f57cd01287d5b1a
+  DTB_VERSION: 063b3026b0c48b80c907726fc9b45459010cfacf
 
 jobs:
   build:
