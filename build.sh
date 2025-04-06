@@ -106,8 +106,7 @@ build \
     -b ${RELEASE_TYPE} \
     -p edk2-platforms/Platform/RaspberryPi/RPi${MODEL}/RPi${MODEL}.dsc \
     --pcd gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString=L"${GIT_COMMIT}" \
+    -D TFA_BUILD_ARTIFACTS=${ATF_BUILD_DIR} \
     ${EDK2_FLAGS} \
     || exit
-    # -D TFA_BUILD_ARTIFACTS=${ATF_BUILD_DIR} \
-
 cp ${WORKSPACE}/Build/RPi${MODEL}/${RELEASE_TYPE}_GCC/FV/RPI_EFI.fd ${PWD}
