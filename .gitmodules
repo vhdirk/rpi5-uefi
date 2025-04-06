@@ -8,8 +8,8 @@
 	branch = master
 [submodule "edk2-platforms"]
 	path = edk2-platforms
-	url = https://github.com/tianocore/edk2-platforms.git
-	branch = master
+	url = https://github.com/vhdirk/edk2-platforms.git
+	branch = rpi5-dev
 [submodule "edk2-non-osi"]
 	path = edk2-non-osi
 	url = https://github.com/tianocore/edk2-non-osi.git

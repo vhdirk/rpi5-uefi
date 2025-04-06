@@ -14,26 +14,58 @@
     devShells = flake-utils.lib.eachDefaultSystemPassThrough (
       system: let
         pkgs = import nixpkgs {
-          # system = "aarch64-linux";
-          # localSystem = "x86_64-linux"; # buildPlatform
-          # crossSystem = "aarch64-linux"; # hostPlatform
           inherit system;
           config = {
             allowUnfree = true;
           };
         };
 
-        pkgs' = pkgs.pkgsCross.aarch64-multiplatform;
-
       in {
 
-        "${system}".default = pkgs'.mkShell {
-          packages = with pkgs';
+        "${system}".default = pkgs.mkShell {
+          packages = with pkgs;
             [
-              gcc
+              libuuid.dev
+              pkgsCross.aarch64-multiplatform.clang
+              dtc
+              # pkgsCross.aarch64-multiplatform.gcc
+              # pkgsCross.aarch64-multiplatform.buildPackages.gcc
+              # pkgsCross.aarch64-multiplatform.buildPackages.binutils
+              # pkgsCross.aarch64-multiplatform.buildPackages.dtc
+
           ];
+
         };
       }
     );
+
+    # devShells = flake-utils.lib.eachDefaultSystemPassThrough (
+    #   system: let
+    #     pkgs = import nixpkgs {
+    #       # localSystem = system; # hostPlatform
+    #       # crossSystem = "aarch64-linux"; # targetPlatform
+    #       system = "aarch64-linux"; # targetPlatform
+
+    #       config = {
+    #         allowUnfree = true;
+    #       };
+    #     };
+
+    #   in {
+
+    #     "${system}".default = pkgs.mkShell {
+    #       packages = with pkgs;
+    #         [
+    #           gcc
+    #           # binutils
+    #           dtc
+    #           clang
+    #       ];
+    #     };
+    #   }
+    # );
+
   };
 }
+
+
